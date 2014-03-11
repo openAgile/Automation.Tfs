@@ -1,0 +1,1 @@
+Powershell.exe -noprofile -executionpolicy Bypass -file ./merge.ps1
