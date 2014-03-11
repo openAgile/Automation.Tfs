@@ -1,5 +1,4 @@
 ﻿using CLAP;
-using VersionOne.Tfs;
 
 namespace VersionOne.Tfs
 {
