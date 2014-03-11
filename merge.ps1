@@ -1,3 +1,7 @@
+param(
+    [alias("ws")]
+    $ws = ''
+)
 Write-Host "Getting TFSConfig full path"
-$path = (Get-ChildItem -path $env:WORKSPACE\ -filter "ilmerge.exe" -erroraction silentlycontinue -recurse)[0].FullName
-& $path /out:$env:WORKSPACE\VersionOne.Tfs.Configure\bin\Debug\VersionOne.Tfs.Configure.all.$env:BUILD_NUMBER.exe $env:WORKSPACE\VersionOne.Tfs.Configure\bin\Debug\VersionOne.Tfs.Configure.exe $env:WORKSPACE\VersionOne.Tfs.Configure\bin\Debug\CLAP.dll $env:WORKSPACE\VersionOne.Tfs.Configure\bin\Debug\VersionOne.Tfs.Tools.dll
+$path = (Get-ChildItem -path $ws\ -filter "ilmerge.exe" -erroraction silentlycontinue -recurse)[0].FullName
+& $path /out:$ws\VersionOne.Tfs.Configure\bin\Debug\VersionOne.Tfs.Configure.all.exe $ws\VersionOne.Tfs.Configure\bin\Debug\VersionOne.Tfs.Configure.exe $ws\VersionOne.Tfs.Configure\bin\Debug\CLAP.dll $ws\VersionOne.Tfs.Configure\bin\Debug\VersionOne.Tfs.Tools.dll
