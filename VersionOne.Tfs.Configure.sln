@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VersionOne.Tfs.Configure", "VersionOne.Tfs.Configure\VersionOne.Tfs.Configure.csproj", "{20A5B476-F879-4EBC-8986-05EDC428CAF7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VersionOne.Tfs", "VersionOne.Tfs.Tools\VersionOne.Tfs.csproj", "{EA6D7856-9949-4B64-9F66-009FC9941ED6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{20A5B476-F879-4EBC-8986-05EDC428CAF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20A5B476-F879-4EBC-8986-05EDC428CAF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20A5B476-F879-4EBC-8986-05EDC428CAF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA6D7856-9949-4B64-9F66-009FC9941ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA6D7856-9949-4B64-9F66-009FC9941ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA6D7856-9949-4B64-9F66-009FC9941ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA6D7856-9949-4B64-9F66-009FC9941ED6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
