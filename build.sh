@@ -12,6 +12,23 @@ set -ex
 # fix for jenkins inserting the windows-style path in $WORKSPACE
 cd "$WORKSPACE"
 export WORKSPACE=`pwd`
+
+# ----- Common ----------------------------------------------------------------
+# Common build script creates functions and variables expected by Jenkins.
+if [ -d $WORKSPACE/../build-tools ]; then
+  ## When script directory already exists, just update when there are changes.
+  cd $WORKSPACE/../build-tools
+  git fetch && git stash
+  if ! git log HEAD..origin/master --oneline --quiet; then
+    git pull
+  fi
+  cd $WORKSPACE
+else
+  git clone https://github.com/versionone/openAgile-build-tools.git $WORKSPACE/../build-tools
+fi
+source ../build-tools/common.sh
+
+
 # ---- Produce .NET Metadata --------------------------------------------------
 
 COMPONENTS="VersionOne.Tfs.Configure VersionOne.Tfs.Tools"
