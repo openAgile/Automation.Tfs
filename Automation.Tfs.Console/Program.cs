@@ -1,6 +1,6 @@
 ﻿using CLAP;
 
-namespace VersionOne.Tfs
+namespace OpenAgile.Automation.Tfs
 {
     class Configure
     {

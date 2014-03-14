@@ -6,7 +6,7 @@ using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.VersionControl.Client;
 
 
-namespace VersionOne.Tfs
+namespace OpenAgile.Automation.Tfs
 {
     public static class Tools
     {
