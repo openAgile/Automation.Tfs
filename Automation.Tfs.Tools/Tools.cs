@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.TeamFoundation.Build.Client;
 using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.VersionControl.Client;
+using System.Net;
 
 
 namespace OpenAgile.Automation.Tfs
@@ -15,8 +16,11 @@ namespace OpenAgile.Automation.Tfs
         {
             string teamProjectPath = "$/" + teamProject;
             // Get a reference to our Team Foundation Server.
-            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(collection),
-                new System.Net.NetworkCredential(user, password));
+            NetworkCredential nc = CredentialCache.DefaultNetworkCredentials;
+            if (!String.IsNullOrWhiteSpace(user))
+                nc = new System.Net.NetworkCredential(user, password);
+
+            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(collection),nc);
             tpc.EnsureAuthenticated();
             VersionControlServer versionControl = tpc.GetService<VersionControlServer>();
             IBuildServer buildServer = tpc.GetService<IBuildServer>();
@@ -64,8 +68,12 @@ namespace OpenAgile.Automation.Tfs
         {
             string teamProjectPath = "$/" + teamProject;
             // Get a reference to our Team Foundation Server.
-            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(collection),
-                new System.Net.NetworkCredential(user,password));
+            NetworkCredential nc = CredentialCache.DefaultNetworkCredentials;
+            if (!String.IsNullOrWhiteSpace(user))
+                nc = new System.Net.NetworkCredential(user, password);
+
+            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(collection), nc);
+
             tpc.EnsureAuthenticated();
             // Get a reference to Version Control.
             VersionControlServer versionControl = tpc.GetService<VersionControlServer>();

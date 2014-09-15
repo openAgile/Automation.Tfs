@@ -29,10 +29,8 @@ namespace OpenAgile.Automation.Tfs
             [Required]
             [Description("Build description")]
             string buildDescription,
-            [Required]
             [Description("Tfs Project Administrator user")]
             string user,
-            [Required]
             [Description("Tfs Project Administrator user")]
             string password)
         {
@@ -52,10 +50,8 @@ namespace OpenAgile.Automation.Tfs
             [Required]
             [Description("Local folder to upload where .sln file is located")]
             string localDir,
-            [Required]
             [Description("Tfs Project Administrator user")]
             string user,
-            [Required]
             [Description("Tfs Project Administrator user")]
             string password)
         {
