@@ -57,5 +57,26 @@ namespace OpenAgile.Automation.Tfs
         {
             Tools.CheckInFolder(tfsTeamProjectCollection, teamProject, workspaceName, localDir, user, password);
         }
+        [Verb(Description = "Subscribe to TFS event")]
+        public static void Subscribe(
+            [Required]
+            [Description("Tfs complete URL including collection")]
+            string tfsTeamProjectCollection,
+            [Required]
+            [Description("Tfs listener web service")]
+            string listener,
+            [Required]
+            [Description("Tfs event")]
+            string tfsEvent,
+            [Required]
+            [Description("Tfs event tag")]
+            string eventTag,
+            [Description("Tfs Project Administrator user")]
+            string user,
+            [Description("Tfs Project Administrator user")]
+            string password)
+        {
+            Tools.Subscribe(tfsTeamProjectCollection, listener, tfsEvent, eventTag, user, password);
+        }
     }
 }

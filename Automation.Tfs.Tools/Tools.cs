@@ -5,13 +5,48 @@ using Microsoft.TeamFoundation.Build.Client;
 using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.VersionControl.Client;
 using System.Net;
+using Microsoft.TeamFoundation.Framework.Client;
 
 
 namespace OpenAgile.Automation.Tfs
 {
     public static class Tools
     {
+        public static void Subscribe(string collection, string listener, string tfsEvent, string eventTag, string user, string password)
+        {
+            NetworkCredential nc = CredentialCache.DefaultNetworkCredentials;
+            if (!String.IsNullOrWhiteSpace(user))
+                nc = new System.Net.NetworkCredential(user, password);
 
+            TfsTeamProjectCollection tpc = new TfsTeamProjectCollection(new Uri(collection), nc);
+            // Get Eventing Service
+            var eventService = (IEventService)tpc.GetService(typeof(IEventService));
+
+            // Set delivery preferences
+            var dPref = new DeliveryPreference { Schedule = DeliverySchedule.Immediate, Address = listener, Type = DeliveryType.Soap };
+
+            // Unsubscribe to all events
+            foreach (var s in eventService.GetEventSubscriptions(tpc.AuthorizedIdentity.Descriptor, eventTag))
+            {
+                eventService.UnsubscribeEvent(s.ID);
+            }
+
+            var filter = string.Empty;
+            if (tfsEvent.Contains(","))
+            {
+                var lstEvents = tfsEvent.Split(new char[]{','});
+                foreach (var e in lstEvents)
+                {
+                    eventService.SubscribeEvent(e, filter, dPref, eventTag);
+                }
+            }
+            else
+            {
+                eventService.SubscribeEvent(tfsEvent, filter, dPref, eventTag);
+            }
+            
+
+        }
         public static void BuildDefinition(string collection, string teamProject, string buildController, string buildName, string buildDescription, string user, string password)
         {
             string teamProjectPath = "$/" + teamProject;
